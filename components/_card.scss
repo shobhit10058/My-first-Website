@@ -1,0 +1,230 @@
+.card{
+    //For 3d effects add this 
+    perspective: 150rem;
+    -moz-perspective: 150rem;//to work with mozilla
+    position: relative;
+    height: 50rem;
+
+    &__brand__name{
+        display: inline-block;
+        position: absolute;
+        border-radius: 10px 10px 0 0;
+        left: 50%;
+        letter-spacing: 0.2rem;
+        padding: 3% 13%;
+        transform: translate(-50%,-100%);
+        color: white;
+        font-size: 1.8rem;
+
+        &--1{
+            background-image: linear-gradient(to right bottom,
+                                            $color-secondary-light,
+                                            $color-secondary-dark);
+        }
+
+        &--2{
+            background-image: linear-gradient(to right bottom,
+                                                $color-primary-light,
+                                                $color-primary-dark);
+        }
+
+        &--3{
+            background-image: linear-gradient(to right bottom,
+                                            $color-tertiary-light,
+                                            $color-tertiary-dark);
+        }
+    }
+    &__side{
+        //background-color: rgba(white,0.9);
+        //padding: 5%;
+        height: 50rem;
+        transition: all 0.7s ease;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;//hides the overflow of any element inside a parent element 
+        box-shadow: 0 1rem 4rem rgba(0,0,0,0.4);
+        position: relative;
+
+        &--front{
+            opacity: 1;
+        }
+        
+        &--back{
+            position: absolute;
+            bottom: 0%;
+            height: 0%;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+
+            &-1{
+                background-image: linear-gradient(to right bottom,
+                                                $color-secondary-light,
+                                                $color-secondary-dark);
+            }
+
+            &-2{
+                background-image: linear-gradient(to right bottom,
+                                                $color-primary-light,
+                                                $color-primary-dark);
+            }
+
+            &-3{
+                background-image: linear-gradient(to right bottom,
+                                                $color-tertiary-light,
+                                                $color-tertiary-dark);
+            }
+            
+            @include respond(tab_p){
+            }
+        }
+    }
+    &:hover &__side--front{
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover &__side--back{
+        height: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+    &__picture{
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        background-blend-mode: color-burn;
+        &-1{
+            background-image: linear-gradient(to right bottom,
+                                $color-secondary-light,
+                                $color-secondary-dark),
+                                url(../img/Apple-phone.jpg);
+        }
+
+        &-2{
+            background-image: linear-gradient(to right bottom,
+                                $color-primary-light,
+                                $color-primary-dark),
+                                url(../img/T-shirt.jpg);
+        }
+
+        &-3{
+            background-image: linear-gradient(to right bottom,
+                                    $color-tertiary-light,
+                                    $color-tertiary-dark),
+                                    url(../img/Mask.jpg);
+        }
+    }
+
+    &__price__details{
+        padding: 10% 0;
+        color: white;
+        text-align: center;
+        margin: 30% auto 20%;
+        position: relative;
+        &__only{
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        
+        &__old__price{
+            position: absolute;
+            font-weight: 200;
+            font-size: 4rem;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            opacity: 1;
+            transition: opacity 0.2s ease 0.8s;
+            &__cut{
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                opacity: 0;
+                visibility: hidden;
+                transform: translate(-50%,-50%);
+                transition: opacity 0.2s ease 1s;
+                font-weight: 200;
+                font-size: 4rem;
+            }
+        }
+
+        &__new__price{
+            font-weight: 200;
+            font-size: 6rem;
+        }
+    }
+
+    &:hover &__price__details &__price__details__old__price{
+        opacity: 0;
+    }
+
+    &:hover &__price__details &__price__details__old__price__cut{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__button{
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    
+    @include respond(tab_p){
+        margin: 0 10rem 50rem;
+    
+        & *,&:hover *{
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &:hover &__side--front{
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &__side--back{
+            visibility: visible;
+            height: 100%;
+            bottom: -75%;
+            opacity: 1;
+            z-index: -1;  
+        }
+    }
+
+    @include respond(phone){
+        margin: 0 1rem 50rem;
+    }
+}
+
+.card__heading{
+    font-size: 2.8rem;
+    font-weight: 300;
+    width: 70%;
+    text-align:right;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    top: 3%;
+    right: 8%;
+
+    &-span{
+        padding: 0.7rem 1.3rem;
+        box-decoration-break: clone;
+        &-1{
+            background-image: linear-gradient(to right bottom,rgba($color-secondary-light,0.8),rgba($color-secondary-dark,0.9));
+        }
+        &-2{
+            background-image: linear-gradient(to right bottom,rgba($color-primary-light,0.8),rgba($color-primary-dark,0.9));
+        }
+        &-3{
+            background-image: linear-gradient(to right bottom,rgba($color-tertiary-light,0.8),rgba($color-tertiary-dark,0.9));
+        }
+    }
+
+}
+
+.tours__button{
+    margin-top: 14vh;
+    text-align: center;
+}
